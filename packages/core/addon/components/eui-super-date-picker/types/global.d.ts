@@ -12,6 +12,23 @@ export type TimeUnitId = 's' | 'm' | 'h' | 'd' | 'w' | 'M' | 'y';
 
 export type TimeUnitFromNowId = 's+' | 'm+' | 'h+' | 'd+' | 'w+' | 'M+' | 'y+';
 
+export type TimeUnitLabel =
+  | 'second'
+  | 'minute'
+  | 'hour'
+  | 'day'
+  | 'week'
+  | 'month'
+  | 'year';
+export type TimeUnitLabelPlural =
+  | 'seconds'
+  | 'minutes'
+  | 'hours'
+  | 'days'
+  | 'weeks'
+  | 'months'
+  | 'years';
+
 export interface RelativeParts {
   count: number;
   round: boolean;

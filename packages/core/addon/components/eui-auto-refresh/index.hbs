@@ -1,0 +1,64 @@
+{{#if @onRefreshChange}}
+  {{#let (unique-id) (unique-id) as |legendId refreshSelectionId|}}
+    <fieldset>
+      <EuiTitle @size="xxxs">
+        <legend id={{legendId}}>
+          <EuiI18n
+            @token="euiRefreshInterval.legend"
+            @default="Refresh every"
+          />
+        </legend>
+      </EuiTitle>
+      <EuiSpacer @size="s" />
+      <EuiFlexGroup @gutterSize="s" @responsive={{false}}>
+        <EuiFlexItem>
+          <EuiFieldNumber
+            @compressed={{true}}
+            @value={{this.value}}
+            {{on "input" this.onValueChange}}
+            {{on "keyup" this.handleKeyDown}}
+            aria-label="Refresh interval value"
+          />
+        </EuiFlexItem>
+        <EuiFlexItem>
+          <EuiSelect
+            @compressed={{true}}
+            @value={{this.units}}
+            aria-label="Refresh interval units"
+            @options={{this.refreshUnitsOptions}}
+            {{on "input" this.onUnitsChange}}
+            {{on "keyup" this.handleKeyDown}}
+            data-test-subj="superDatePickerRefreshIntervalUnitsSelect"
+          />
+        </EuiFlexItem>
+        <EuiFlexItem @grow={{false}}>
+          <EuiButton
+            class="euiRefreshInterval__startButton"
+            @iconType={{if this.isPaused "play" "stop"}}
+            @size="s"
+						{{on "click" this.toggleRefresh}}
+            @isDisabled={{or (eq this.value "") (lte this.value 0)}}
+          >
+            {{#if this.isPaused}}
+              <EuiI18n @token="euiRefreshInterval.start" @default="Start" />
+            {{else}}
+              <EuiI18n @token="euiRefreshInterval.stop" @default="Stop" />
+            {{/if}}
+          </EuiButton>
+        </EuiFlexItem>
+      </EuiFlexGroup>
+      <p id={{refreshSelectionId}} {{screen-reader-only}}>
+        <EuiI18n
+          @token="euiRefreshInterval.fullDescription"
+          @default="Refresh interval currently set to {optionValue} {optionText}."
+          @values={{hash optionValue=this.value optionText=this.optionText}}
+          as |Token|
+        >
+          <Token as |tkn|>
+            {{tkn}}
+          </Token>
+        </EuiI18n>
+      </p>
+    </fieldset>
+  {{/let}}
+{{/if}}
