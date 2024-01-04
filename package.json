@@ -1,34 +1,30 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "site"
-  ],
   "devDependencies": {
     "@embroider/addon-shim": "^1.8.6",
-    "@glint/core": "^1.2.0",
     "@nullvoxpopuli/eslint-configs": "^3.2.2",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
-    "@underline/eslint-config": "^0.15.1",
-    "concurrently": "^8.2.2",
     "eslint": "^8.31.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "@changesets/cli": "^2.26.0",
     "prettier": "^3.0.3",
     "prettier-plugin-ember-template-tag": "^1.1.0",
+    "typescript": "~5.0.3",
+    "@underline/eslint-config": "^0.15.1",
+    "concurrently": "^8.2.2",
+    "@glint/core": "^1.2.0",
     "turbo": "^1.11.2",
-    "typescript": "~5.0.3"
+    "@changesets/cli": "^2.26.0"
   },
   "scripts": {
-    "build": "pnpm turbo build",
-    "build:site": "pnpm turbo build --filter site",
     "lint:js": "eslint . --fix --ext .js,.ts,.hbs,.gts,.gjs",
     "start": "concurrently 'npm:_start:*' --names '_start:'",
+    "publish-packages": "pnpm build --filter './packages/*' && changeset version && changeset publish",
+    "build:site": "pnpm turbo build --filter site",
+    "build": "pnpm turbo build",
     "_start:site": "pnpm --filter site start",
-    "_start:packages": "pnpm --stream -parallel --filter './packages/*' start --no-watch.clearScreen",
-    "publish-packages": "pnpm build --filter './packages/*' && changeset version && changeset publish"
+    "_start:packages": "pnpm --stream -parallel --filter './packages/*' start --no-watch.clearScreen"
   },
   "volta": {
     "node": "18.0.0"
@@ -45,5 +41,9 @@
     "overrides": {
       "ember-source": "~4.2.0"
     }
-  }
+  },
+  "workspaces": [
+    "packages/*",
+    "site"
+  ]
 }

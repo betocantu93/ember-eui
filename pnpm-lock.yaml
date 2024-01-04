@@ -1047,6 +1047,9 @@ importers:
       '@glimmer/tracking':
         specifier: ^1.1.2
         version: 1.1.2
+      '@glint/core':
+        specifier: ^1.2.0
+        version: 1.2.1(typescript@5.0.4)
       '@glint/environment-ember-loose':
         specifier: ^1.2.0
         version: 1.2.1(@glimmer/component@1.1.2)(@glint/template@1.2.1)(@types/ember__array@4.0.9)(@types/ember__component@4.0.21)(@types/ember__controller@4.0.11)(@types/ember__object@4.0.11)(@types/ember__routing@4.0.19)(ember-modifier@4.1.0)
@@ -1137,6 +1140,9 @@ importers:
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
+      decorator-transforms:
+        specifier: ^1.0.2
+        version: 1.0.2(@babel/core@7.23.7)
       ember-cli:
         specifier: ~4.1.1
         version: 4.1.1
@@ -1329,6 +1335,9 @@ importers:
       codesandbox:
         specifier: ^2.2.3
         version: 2.2.3
+      concurrently:
+        specifier: ^8.2.2
+        version: 8.2.2
       ember-auto-import:
         specifier: ^2.6.3
         version: 2.7.2(@glint/template@1.2.1)(webpack@5.89.0)
@@ -9376,6 +9385,15 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       mimic-response: 2.1.0
+    dev: true
+
+  /decorator-transforms@1.0.2(@babel/core@7.23.7):
+    resolution: {integrity: sha512-Pj2U7Pt9SZYNq+FLomhHhEqkVUEIuGTAY18yzeq6jn2O4ryqAp0rlHQvAwBuoAUlsxSr4tZJAaWYqgbMORahAQ==}
+    dependencies:
+      '@babel/plugin-syntax-decorators': 7.23.3(@babel/core@7.23.7)
+      babel-import-util: 2.0.1
+    transitivePeerDependencies:
+      - '@babel/core'
     dev: true
 
   /deep-extend@0.6.0:
