@@ -18,7 +18,6 @@
     "lint:js:fix": "eslint . --fix",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
-    "build": "ember build --environment=production",
     "_syncPnpm": "pnpm sync-dependencies-meta-injected",
     "start": "concurrently 'ember serve' 'pnpm _syncPnpm --watch' --names 'site serve,site sync built package'"
   },
