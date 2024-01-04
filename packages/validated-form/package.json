@@ -15,7 +15,7 @@
   "scripts": {
     "build": "concurrently 'npm:build:*'",
     "build:js": "rollup --config",
-    "build:types": "glint --build",
+    "build:types": "glint --declaration",
     "lint": "eslint . --cache",
     "lint:fix": "eslint . --fix",
     "lint:js": "eslint . --cache",
@@ -23,7 +23,7 @@
     "prepack": "pnpm run build",
     "start": "concurrently 'npm:start:*'",
     "start:js": "rollup --config --watch",
-    "start:types": "glint --build --watch"
+    "start:types": "glint --declaration --watch"
   },
   "exports": {
     ".": {
@@ -78,6 +78,7 @@
     "@embroider/test-setup": "^3.0.2",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
+    "@glint/core": "^1.2.0",
     "@glint/environment-ember-loose": "^1.2.0",
     "@glint/environment-ember-template-imports": "^1.2.0",
     "@glint/template": "^1.2.0",
@@ -108,6 +109,7 @@
     "@types/ember__utils": "^4.0.3",
     "babel-plugin-ember-template-compilation": "^2.2.1",
     "concurrently": "^8.2.2",
+    "decorator-transforms": "^1.0.2",
     "ember-cli": "~4.1.1",
     "ember-source": "~4.2.0",
     "ember-template-imports": "^3.4.2",
